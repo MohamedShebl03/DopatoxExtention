@@ -1,0 +1,49 @@
+{
+    "manifest_version": 3,
+    "name": "Dopatox",
+    "version": "1.0",
+    "description": "",
+    "host_permissions": ["https://api.dopatox.site/*"],
+    "permissions": [
+        "tabs",
+        "storage",
+        "https://api.dopatox.site/"
+    ],
+
+    "web_accessible_resources": [
+    {
+      "resources": [
+        "./auth/signin.js",
+        "./auth/auth.js",
+        "./auth/signup.js",
+        "./auth/verification.js",
+        "./style.css"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://www.youtube.com/*"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "./img/icon.png"
+        }
+    },
+    "icons": {
+        "16": "./img/icon.png",
+        "48": "./img/icon.png",
+        "128": "./img/icon.png"
+    }
+}
